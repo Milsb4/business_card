@@ -1,0 +1,201 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Хедер */
+.header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+    padding: 2rem 0;
+    text-align: center;
+    border-bottom: 3px solid #fff;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+/* Основной блок */
+.block {
+    padding: 2rem 0;
+    flex: 1;
+}
+
+.list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.list-item {
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #333;
+}
+
+.list-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+}
+
+.list-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #333, #555);
+    margin-bottom: 1rem;
+    border: 2px solid #fff;
+}
+
+.desc__img {
+    font-size: 1.1rem;
+    color: #ccc;
+    font-style: italic;
+}
+
+/* Кнопка */
+button {
+    display: block;
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #fff 0%, #ccc 100%);
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, #ccc 0%, #fff 100%);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Футер */
+footer {
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: auto;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-top: 3px solid #000;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .list {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .list {
+        grid-template-columns: 1fr;
+    }
+    
+    .list-item {
+        padding: 1rem;
+    }
+}
+
+/* Анимация фейерверка */
+.firework-particle {
+    position: fixed;
+    pointer-events: none;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: firework-animation 1s ease-out forwards;
+    z-index: 1000;
+}
+
+@keyframes firework-animation {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Вспышка при взрыве */
+.firework-flash {
+    position: fixed;
+    pointer-events: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff 0%, transparent 70%);
+    animation: flash-animation 0.3s ease-out forwards;
+    z-index: 1001;
+}
+
+@keyframes flash-animation {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
